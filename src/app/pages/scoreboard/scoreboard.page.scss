@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  height: 100%;
+
+  ion-content {
+    --background: none;
+    background-image: url('/assets/img/background/bg.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+}

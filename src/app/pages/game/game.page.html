@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white">
+    <ion-title class="text-center font-bold">Bataille</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding bg-black text-white flex flex-col justify-center items-center min-h-screen gap-6">
+
+  <div class="flex flex-col gap-2 items-center">
+    <p class="text-lg">Cartes restantes — {{ score.joueur }} | {{ score.bot }}</p>
+    <p *ngIf="gagnantTour" class="text-xl font-bold text-green-400">
+      {{ gagnantTour === 'egalite' ? "Égalité !" : gagnantTour === 'joueur' ? "Tu gagnes le tour !" : "Le bot gagne le tour !" }}
+    </p>
+  </div>
+
+  <div class="flex flex-row gap-12 items-center justify-center">
+    <div class="text-center">
+      <h2 class="text-md font-semibold text-indigo-300">Toi</h2>
+      <img
+        [src]="joueurCarte ? getImageCarte(joueurCarte) : 'assets/img/cards/back.svg.png'"
+        class="w-24 h-36 object-contain mx-auto rounded shadow-md"
+        alt="Carte du joueur"
+      />
+    </div>
+    <div class="text-center">
+      <h2 class="text-md font-semibold text-red-300">Bot</h2>
+      <img
+        [src]="botCarte ? getImageCarte(botCarte) : 'assets/img/cards/back.svg.png'"
+        class="w-24 h-36 object-contain mx-auto rounded shadow-md"
+        alt="Carte du bot"
+      />
+    </div>
+  </div>
+
+  <p *ngIf="partieTerminee" class="text-xl text-yellow-400 font-bold">
+    Partie terminée ! {{ gagnantTour === 'joueur' ? 'Tu as gagné !' : 'Le bot a gagné !' }}
+  </p>
+
+
+  <div class="flex flex-col gap-3 w-64">
+    <ion-button expand="block" color="primary" routerLink="/">Accueil</ion-button>
+    <ion-button expand="block" (click)="tirer()">Tirer une carte</ion-button>
+    <ion-button expand="block" color="medium" (click)="nouvellePartie()">Nouvelle partie</ion-button>
+  </div>
+
+</ion-content>

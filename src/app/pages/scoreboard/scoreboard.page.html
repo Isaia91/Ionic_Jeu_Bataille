@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar class="bg-gradient-to-r from-purple-700 to-indigo-600 text-white">
+    <ion-title class="text-center font-bold">Scoreboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding bg-black text-white">
+  <ion-button expand="block" color="danger" (click)="resetHistorique()">
+    Réinitialiser
+  </ion-button>
+
+  <ion-list *ngIf="historique.length > 0; else aucun">
+    <ion-item *ngFor="let partie of historique">
+      <ion-label>
+        <h2 class="text-lg">{{ partie.date }} – Mode : {{ partie.mode }}</h2>
+        <p>Vainqueur : {{ partie.gagnant }} | Plis : {{ partie.plis }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #aucun>
+    <p class="text-center text-gray-400 mt-6">Aucune partie enregistrée pour l'instant</p>
+  </ng-template>
+</ion-content>
